@@ -89,11 +89,38 @@
         message.appendChild(contentElement);
         
         document.getElementById("message-list").appendChild(message);
+      
         
         document.getElementById("name-input").value = "";
         document.getElementById("content-input").value = "";
       }
     });
+  </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>表白墙</title>
+</head>
+<body>
+  <h1>表白墙</h1>
+
+  <ul id="message-list"></ul>
+
+  <script>
+    fetch("https://api.github.com/repos/你的用户名/你的仓库名/issues?labels=表白")
+      .then(response => response.json())
+      .then(data => {
+        const messageList = document.getElementById("message-list");
+        data.forEach(issue => {
+          const message = document.createElement("li");
+          message.textContent = issue.body;
+          messageList.appendChild(message);
+        });
+      });
   </script>
 </body>
 </html>
