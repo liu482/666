@@ -1,1 +1,101 @@
-https://liu482.github.io/abc
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>表白墙</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333333;
+    }
+    
+    #message-form {
+      margin-bottom: 20px;
+    }
+    
+    #message-form input[type="text"], #message-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+    }
+    
+    #message-form textarea {
+      height: 100px;
+    }
+    
+    #message-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .message {
+      background-color: #ffffff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .message .name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .message .content {
+      color: #333333;
+    }
+  </style>
+</head>
+<body>
+  <h1>表白墙</h1>
+  
+  <form id="message-form">
+    <input type="text" id="name-input" placeholder="请输入您的姓名">
+    <textarea id="content-input" placeholder="请输入表白内容"></textarea>
+    <button type="submit">发表</button>
+  </form>
+  
+  <ul id="message-list"></ul>
+  
+  <script>
+    document.getElementById("message-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      var name = document.getElementById("name-input").value;
+      var content = document.getElementById("content-input").value;
+      
+      if (name && content) {
+        var message = document.createElement("li");
+        message.className = "message";
+        
+        var nameElement = document.createElement("div");
+        nameElement.className = "name";
+        nameElement.textContent = name;
+        
+        var contentElement = document.createElement("div");
+        contentElement.className = "content";
+        contentElement.textContent = content;
+        
+        message.appendChild(nameElement);
+        message.appendChild(contentElement);
+        
+        document.getElementById("message-list").appendChild(message);
+        
+        document.getElementById("name-input").value = "";
+        document.getElementById("content-input").value = "";
+      }
+    });
+  </script>
+</body>
+</html>
+
+
